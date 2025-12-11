@@ -8,13 +8,18 @@
 
 ### Installation
 
-1. Clone this repository and create an environment.
-```bash
-git clone git@github.com:Dstate/LBP.git
-conda create -n lbp python=3.8 -y
-conda activate lbp
 
+1. Clone this repository and create the environment.
+```bash
+git git@github.com:Dstate/UAGLNet.git
+conda create -n uaglnet python=3.8 -y
+conda activate uaglnet
+
+conda install pytorch==1.10.0 torchvision==0.11.0 torchaudio==0.10.0 cudatoolkit=11.3 -c pytorch -c conda-forge
+pip install -r requirements.txt
 ```
+
+
 
 
 
