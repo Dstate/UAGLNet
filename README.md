@@ -15,9 +15,10 @@ We present UAGLNet, which is capable to exploit high-quality global-local visual
 Clone this repository and create the environment.
 ```bash
 git git@github.com:Dstate/UAGLNet.git
+cd UAGLNet
+
 conda create -n uaglnet python=3.8 -y
 conda activate uaglnet
-
 conda install pytorch==1.10.0 torchvision==0.11.0 torchaudio==0.10.0 cudatoolkit=11.3 -c pytorch -c conda-forge
 pip install -r requirements.txt
 ```
