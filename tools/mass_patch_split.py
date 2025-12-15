@@ -117,26 +117,18 @@ def patch_format(inp):
 
 if __name__ == "__main__":
     seed_everything(SEED)
-    #args = parse_args()
+    args = parse_args()
+    input_img_dir = args.input_img_dir
+    input_mask_dir = args.input_mask_dir
+    imgs_output_dir = args.imgs_output_dir
+    masks_output_dir = args.masks_output_dir
+    mode = args.mode
 
-
-    #parser = argparse.ArgumentParser()
-
-    input_img_dir = "/home/zrh/code/data/mass/test"
-    input_mask_dir = "/home/zrh/code/data/mass/test_labels"
-
-    imgs_output_dir ="/home/zrh/code/data/mass_patches/test_images"
-    masks_output_dir ="/home/zrh/code/data/mass_patches/test_masks"
-
-    #parser.add_argument("--mode", type=str, default='train')
 
     img_paths = glob.glob(os.path.join(input_img_dir, "*.png"))
     mask_paths = glob.glob(os.path.join(input_mask_dir, "*.png"))
     img_paths.sort()
     mask_paths.sort()
-
-
-    mode = "val"
 
     if not os.path.exists(imgs_output_dir):
         os.makedirs(imgs_output_dir)

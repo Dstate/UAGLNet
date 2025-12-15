@@ -1,6 +1,8 @@
 from PIL import Image, ImageOps, ImageEnhance
 import numpy as np
 import cv2,os
+import argparse
+
 
 def pad_img(img):
     ret = cv2.copyMakeBorder(img, 0, 36, 0, 36, cv2.BORDER_CONSTANT, value=(0,0,0))
@@ -23,13 +25,21 @@ def crop(img,mask,split_size,stride,img_name,save_path,mode):
     print("total img:",index)
 
 
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--path", default="/home/zrh/code/data/mass/train")
+    parser.add_argument("--save_path", default="/home/zrh/code/data/mass/train_labels")
+    parser.add_argument("--mode", type=str, default='train')
+
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
+    args = parse_args()
 
-    path = "/Users/peco/Desktop/mass_patches/"
-
-    save_path =  "/Users/peco/Desktop/mass_512/"
-
-    mode = "train/"
+    path = args.path
+    save_path = args.save_path
+    mode = args.mode
 
     cnt = 0
     for img_name in os.listdir(path+mode+"img/"):
