@@ -3,7 +3,7 @@
 We follow [BuildingExtraction](https://github.com/stdcoutzrh/BuildingExtraction) to preprocess all the datasets. Please download the [Inria](https://project.inria.fr/aerialimagelabeling/), [WHU](https://gpcv.whu.edu.cn/data/building_dataset.html), and [Massachusetts](https://www.cs.toronto.edu/~vmnih/data/) datasets, and organize them as follows.
 
   
-### **Preparation**
+### Preparation
 
 Prepare the following folders to organize the datasets:
 ```none
@@ -34,7 +34,7 @@ Prepare the following folders to organize the datasets:
 ```
 
 
-### **INRIA**
+### Inria
 
 ```bash
 # preprocess training set
@@ -54,7 +54,7 @@ python tools/inria_patch_split.py \
 --mode "val"
 ```
 
-### **WHU**
+### WHU
 
 Note: Download the WHU aerial imagery dataset.
 
@@ -75,7 +75,7 @@ python tools/whubuilding_mask_convert.py \
 --output-mask-dir "data/WHU/test/masks" 
 ```
 
-### **Massachusetts**
+### Massachusetts
 
 Note: Download the Massachusetts buildings dataset.
 
@@ -111,7 +111,7 @@ python tools/split_1500_to_512.py \
 
 ```
 
-### **Final Folder Structure**
+### Final Folder Structure
 Finally, you should have the following folders and structure::
 
 ```none
