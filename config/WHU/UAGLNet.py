@@ -27,7 +27,7 @@ net = UAGLNet(drop_path_rate=0.1)
 loss_func = UAGLloss()
 
 # define the dataloader
-data_path = '/data/ldx_data/BuildingExtraction/WHU'
+data_path = 'path/to/WHU'
 train_dataset = WHUBuildingDataset(data_root=os.path.join(data_path,'train'), mode='train', mosaic_ratio=0.25, transform=train_aug)
 val_dataset = WHUBuildingDataset(data_root=os.path.join(data_path,'val'), mode='val', transform=val_aug)
 test_dataset = WHUBuildingDataset(data_root=os.path.join(data_path,'test'), mode='val', transform=val_aug)

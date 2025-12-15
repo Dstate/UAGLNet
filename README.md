@@ -1,11 +1,14 @@
 # UAGLNet: Uncertainty-Aggregated Global-Local Fusion Network with Cooperative CNN-Transformer for Building Extraction
 
+[[Paper](https://www.arxiv.org/abs/2505.06861)]
+
+🔥 **UAGLNet has been accepted by IEEE TGRS**
+
 ## Introduction
 
 we present an Uncertainty-Aggregated Global-Local Fusion Network (UAGLNet), which is capable to exploit high-quality global-local visual semantics under the guidance of uncertainty modeling. Specifically, we propose a novel cooperative encoder, which adopts hybrid CNN and transformer layers at different stages to capture the local and global visual semantics, respectively. An intermediate cooperative interaction block (CIB) is designed to narrow the gap between the local and global features when the network becomes deeper. Afterwards, we propose a Global-Local Fusion (GLF) module to complementarily fuse the global and local representations. Moreover, to mitigate the segmentation ambiguity in uncertain regions, we propose an Uncertainty-Aggregated Decoder (UAD) to explicitly estimate the pixel-wise uncertainty to enhance the segmentation accuracy. Extensive experiments demonstrate that our method achieves superior performance to other state-of-the-art methods.
 
 <img width="1000"  src="assets/architecture2.png">
-
 
 ## Quick Start
 
@@ -28,7 +31,7 @@ Download the pretrained backbone (`backbone.pth`) from [link](https://drive.goog
 mv backbone.pth geoseg/models/
 ```
 
-Training and testing example on Inria dataset:
+Training and testing examples on the Inria dataset:
 ```bash
 # training
 python UAGLnet_train.py -c config/inria/UAGLNet.py
@@ -38,14 +41,12 @@ python UAGLnet_test.py -c config/inria/UAGLNet.py
 ```
 
 
-
-
 ## Acknowledgement
 This work is built upon [BuildingExtraction](https://github.com/stdcoutzrh/BuildingExtraction), [GeoSeg](https://github.com/WangLibo1995/GeoSeg/tree/main) and [SMT](https://github.com/AFeng-x/SMT). We sincerely appreciate their contributions which provide a clear pipeline and well-organized code.
 
 
 <!-- ## Citation
-If the paper is helpful with your research, please cite it as:
+If you find this project useful in your research, please cite it as:
 ```
 @inproceedings{liu-niu2025lbp,
   title     = {},

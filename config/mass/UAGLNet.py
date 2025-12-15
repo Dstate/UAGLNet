@@ -34,7 +34,7 @@ net = UAGLNet(drop_path_rate=0.4)
 loss_func = UAGLloss()
 
 # define the dataloader
-data_path = '/data/ldx_data/BuildingExtraction/Massachusetts/mass_512'
+data_path = 'path/to/Massachusetts/mass_512'
 train_dataset = MassBuildDataset(data_root=os.path.join(data_path,'train'), mode='train', mosaic_ratio=0.25, transform=get_training_transform())
 val_dataset = MassBuildDataset(data_root=os.path.join(data_path,'val'), mode='val', transform=get_validation_transform())
 test_dataset = MassBuildDataset(data_root=os.path.join(data_path,'test'), mode='val', transform=get_validation_transform())
