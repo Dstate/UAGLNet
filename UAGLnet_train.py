@@ -100,12 +100,9 @@ def get_args():
     return parser.parse_args()
 
 def create_save_path(save_path):
-    if not os.path.exists(save_path):
-        os.mkdir(save_path)
-    if not os.path.exists(os.path.join(save_path, 'visualization')):
-        os.mkdir(os.path.join(save_path, 'visualization'))
-    if not os.path.exists(os.path.join(save_path, 'ckpts')):
-        os.mkdir(os.path.join(save_path, 'ckpts'))
+    os.makedirs(save_path, exist_ok=True)
+    os.makedirs(os.path.join(save_path, 'visualization'), exist_ok=True)
+    os.makedirs(os.path.join(save_path, 'ckpts'), exist_ok=True)
 
 def main():
     print("train process begins")
