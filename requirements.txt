@@ -11,3 +11,4 @@ matplotlib
 einops
 addict
 gdown
+yacs
