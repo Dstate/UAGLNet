@@ -31,7 +31,7 @@ net = UAGLNet(drop_path_rate=0.2)
 loss_func = UAGLloss()
 
 # define the dataloader
-data_root = 'path/to/AerialImageDataset'
+data_root = '/mnt/ssd1/data/ldx/data/AerialImageDataset'
 train_dataset = InriaDataset(data_root=f"{data_root}/train", mode='train', mosaic_ratio=0.25, transform=get_training_transform())
 val_dataset = InriaDataset(data_root=f"{data_root}/val", mode='val', transform=get_validation_transform())
 test_dataset = InriaDataset(data_root=f"{data_root}/val", mode='val', transform=get_validation_transform())
