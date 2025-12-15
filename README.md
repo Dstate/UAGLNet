@@ -1,6 +1,6 @@
 # UAGLNet: Uncertainty-Aggregated Global-Local Fusion Network with Cooperative CNN-Transformer for Building Extraction
 
-[[Paper](https://www.arxiv.org/abs/2505.06861)]
+[[Paper](https://To/be/updated)] [[Arxiv](https://To/be/updated)]
 
 🔥 **UAGLNet has been accepted by IEEE TGRS**
 
@@ -45,10 +45,6 @@ python UAGLnet_test.py -c config/inria/UAGLNet.py
 ```
 
 
-## Acknowledgement
-This work is built upon [BuildingExtraction](https://github.com/stdcoutzrh/BuildingExtraction), [GeoSeg](https://github.com/WangLibo1995/GeoSeg/tree/main) and [SMT](https://github.com/AFeng-x/SMT). We sincerely appreciate their contributions which provide a clear pipeline and well-organized code.
-
-
 <!-- ## Citation
 If you find this project useful in your research, please cite it as:
 ```
@@ -59,3 +55,6 @@ If you find this project useful in your research, please cite it as:
   year      = {}
 }
 ``` -->
+
+## Acknowledgement
+This work is built upon [BuildingExtraction](https://github.com/stdcoutzrh/BuildingExtraction), [GeoSeg](https://github.com/WangLibo1995/GeoSeg/tree/main) and [SMT](https://github.com/AFeng-x/SMT). We sincerely appreciate their contributions which provide a clear pipeline and well-organized code.
