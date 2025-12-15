@@ -20,7 +20,7 @@ TEST_IMG_SIZE = (512, 512)
 
 
 class MassBuildDataset(Dataset):
-    def __init__(self, data_root='/home/zrh/datasets/mass', mode='train', img_dir='img', mask_dir='mask',
+    def __init__(self, data_root='/home/zrh/datasets/mass', mode='train', img_dir='images', mask_dir='masks',
                  img_suffix='.png', mask_suffix='.png', transform=None, mosaic_ratio=0.25,
                  img_size=ORIGIN_IMG_SIZE):
         self.data_root = data_root

@@ -29,7 +29,6 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--path", default="/home/zrh/code/data/mass/train")
     parser.add_argument("--save_path", default="/home/zrh/code/data/mass/train_labels")
-    parser.add_argument("--mode", type=str, default='train')
 
     return parser.parse_args()
 
@@ -39,24 +38,23 @@ if __name__ == "__main__":
 
     path = args.path
     save_path = args.save_path
-    mode = args.mode
+    for mode in ["train", "val", "test"]:
+        cnt = 0
+        for img_name in os.listdir(path+mode+"images/"):
+            if img_name[-1] == "g":
+                pure_name = img_name.split(".")[0]
+                #print(pure_name)
+                img = cv2.imread(path+mode+"images/"+img_name,cv2.IMREAD_UNCHANGED)
+                mask = cv2.imread(path+mode+"masks/"+img_name,cv2.IMREAD_UNCHANGED)
 
-    cnt = 0
-    for img_name in os.listdir(path+mode+"img/"):
-        if img_name[-1] == "g":
-            pure_name = img_name.split(".")[0]
-            #print(pure_name)
-            img = cv2.imread(path+mode+"img/"+img_name,cv2.IMREAD_UNCHANGED)
-            mask = cv2.imread(path+mode+"mask/"+img_name,cv2.IMREAD_UNCHANGED)
+                img_pad = pad_img(img)
+                mask_pad = pad_mask(mask)
 
-            img_pad = pad_img(img)
-            mask_pad = pad_mask(mask)
+                crop(img_pad,mask_pad,512,512,pure_name,save_path,mode)
 
-            crop(img_pad,mask_pad,512,512,pure_name,save_path,mode)
-
-            #print(mask_pad.shape)
-            cnt+=1
-    print(cnt)
+                #print(mask_pad.shape)
+                cnt+=1
+        print(cnt)
     
     
 
