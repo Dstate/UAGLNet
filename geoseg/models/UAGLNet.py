@@ -345,7 +345,7 @@ def create_encoder(drop_path_rate = 0.):
         embed_dims=[64, 128, 256, 512], ca_num_heads=[4, 4, 4, -1], sa_num_heads=[-1, -1, 8, 16], mlp_ratios=[4, 4, 4, 2], 
         qkv_bias=True, depths=[2, 2, 8, 1], ca_attentions=[1, 1, 1, 0], head_conv=3, expand_ratio=2, drop_path_rate=drop_path_rate)
 
-    pretrained_dict = torch.load('geoseg/models/smt_tiny.pth')['model']
+    pretrained_dict = torch.load('geoseg/models/backbone.pth')['model']
     encoder_dict = encoder.state_dict()
     state_dict = {k: v for k, v in pretrained_dict.items() if k in encoder_dict and v.shape == encoder_dict[k].shape}
     encoder.load_state_dict(state_dict, strict=False)
