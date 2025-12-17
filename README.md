@@ -25,7 +25,9 @@ pip install -r requirements.txt
 
 ### Data Preprocessing
 
-We follow [BuildingExtraction](https://github.com/stdcoutzrh/BuildingExtraction) to preprocess all the datasets. Please download the [Inria](https://project.inria.fr/aerialimagelabeling/), [WHU](https://gpcv.whu.edu.cn/data/building_dataset.html), and [Massachusetts](https://www.cs.toronto.edu/~vmnih/data/) datasets, and organize them following [guidance](https://github.com/Dstate/UAGLNet/blob/main/assets/DATA_PREPARATION.md).
+We conduct experiments on the Inria, WHU, and Massachusetts datasets.  
+Please refer to the detailed guidance for dataset preprocessing:
+[DATA_PREPARATION.md](https://github.com/Dstate/UAGLNet/blob/main/assets/DATA_PREPARATION.md).
 
 
 ### Training & Testing
