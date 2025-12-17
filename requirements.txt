@@ -12,3 +12,4 @@ einops
 addict
 gdown
 yacs
+huggingface_hub
