@@ -25,9 +25,7 @@ pip install -r requirements.txt
 
 ### Data Preprocessing
 
-We conduct experiments on the Inria, WHU, and Massachusetts datasets.  
-Please refer to the detailed guidance for dataset preprocessing:
-[DATA_PREPARATION.md](https://github.com/Dstate/UAGLNet/blob/main/assets/DATA_PREPARATION.md).
+We conduct experiments on the Inria, WHU, and Massachusetts datasets. Detailed guidance for dataset preprocessing is provided here: [DATA_PREPARATION.md](https://github.com/Dstate/UAGLNet/blob/main/assets/DATA_PREPARATION.md).
 
 
 ### Training & Testing
