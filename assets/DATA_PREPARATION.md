@@ -24,7 +24,7 @@ Prepare the following folders to organize the datasets:
 │   │   │   ├── images (original images)
 │   │   │   ├── masks_origin (original masks)
 ├── ├── Massachusetts
-│   │   ├── raw
+│   │   ├── png
 │   │   │   ├── train (original images)
 │   │   │   ├── train_labels (original masks, RGB format)
 │   │   │   ├── val (original images)
@@ -56,7 +56,8 @@ python tools/inria_patch_split.py \
 
 ### WHU
 
-Note: Download the WHU aerial imagery dataset.
+Note: Please download the WHU Aerial Imagery Dataset, specifically
+“1.1 The cropped aerial image tiles and raster labels (0.3 m resolution)”.
 
 ```bash
 # preprocess training set
@@ -77,29 +78,29 @@ python tools/whubuilding_mask_convert.py \
 
 ### Massachusetts
 
-Note: Download the Massachusetts buildings dataset.
+Note: Download the Massachusetts Buildings Dataset. You can also download it from [Kaggle](https://www.kaggle.com/datasets/balraj98/massachusetts-buildings-dataset) for convenience.
 
 ```bash
 # preprocess training set
 python tools/mass_patch_split.py \
---input-img-dir "data/Massachusetts/raw/train" \
---input-mask-dir "data/Massachusetts/raw/train_labels" \
+--input-img-dir "data/Massachusetts/png/train" \
+--input-mask-dir "data/Massachusetts/png/train_labels" \
 --output-img-dir "data/Massachusetts/buildE/train/images" \
 --output-mask-dir "data/Massachusetts/buildE/train/masks" \
 --mode "train"
 
 # preprocess validation set
 python tools/mass_patch_split.py \
---input-img-dir "data/Massachusetts/raw/val" \
---input-mask-dir "data/Massachusetts/raw/val_labels" \
+--input-img-dir "data/Massachusetts/png/val" \
+--input-mask-dir "data/Massachusetts/png/val_labels" \
 --output-img-dir "data/Massachusetts/buildE/val/images" \
 --output-mask-dir "data/Massachusetts/buildE/val/masks" \
 --mode "val"
 
 # preprocess testing set
 python tools/mass_patch_split.py \
---input-img-dir "data/Massachusetts/raw/test" \
---input-mask-dir "data/Massachusetts/raw/test_labels" \
+--input-img-dir "data/Massachusetts/png/test" \
+--input-mask-dir "data/Massachusetts/png/test_labels" \
 --output-img-dir "data/Massachusetts/buildE/test/images" \
 --output-mask-dir "data/Massachusetts/buildE/test/masks" \
 --mode "val"

@@ -42,12 +42,14 @@ def rgb_to_label(mask):
 
 def patch_format(inp):
     (mask_path, masks_output_dir) = inp
+    print(f"{mask_path} start")
     # print(mask_path, masks_output_dir)
     mask_filename = os.path.splitext(os.path.basename(mask_path))[0]
     mask = cv2.imread(mask_path)
     label = rgb_to_label(mask)
     out_mask_path = os.path.join(masks_output_dir, "{}.png".format(mask_filename))
     cv2.imwrite(out_mask_path, label)
+    print(f"{mask_path} ok")
 
 
 if __name__ == "__main__":
@@ -56,7 +58,7 @@ if __name__ == "__main__":
     masks_dir = args.mask_dir
     masks_output_dir = args.output_mask_dir
     mask_paths = glob.glob(os.path.join(masks_dir, "*.png"))
-    # print(mask_paths)
+    print(mask_paths)
 
     if not os.path.exists(masks_output_dir):
         os.makedirs(masks_output_dir)

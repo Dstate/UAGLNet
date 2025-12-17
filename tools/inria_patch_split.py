@@ -118,6 +118,7 @@ def padifneeded(image, mask, patch_size, stride):
 
 def patch_format(inp):
     (img_path, mask_path, imgs_output_dir, masks_output_dir, mode, split_size, stride) = inp
+    print(f"{img_path} start")
     if mode == 'val':
         gt_path = masks_output_dir + "_gt"
         #if not os.path.exists(gt_path):
@@ -135,6 +136,9 @@ def patch_format(inp):
 
     image_list, mask_list = image_augment(image=img.copy(), mask=mask.copy(), mode=mode)
     assert len(image_list) == len(mask_list)
+
+    print(f"{img_path} 50%")
+
     for m in range(len(image_list)):
         k = 0
         img = image_list[m]
@@ -172,6 +176,7 @@ def patch_format(inp):
 
                 k += 1
 
+    print(f'{img_path} ok')
 
 if __name__ == "__main__":
     seed_everything(SEED)
@@ -204,6 +209,7 @@ if __name__ == "__main__":
            for img_path, mask_path in zip(img_paths, mask_paths)]
 
     t0 = time.time()
+    print('running...')
     mpp.Pool(processes=mp.cpu_count()).map(patch_format, inp)
     t1 = time.time()
     split_time = t1 - t0
