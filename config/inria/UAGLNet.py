@@ -24,11 +24,12 @@ backbone_weight_decay = 0.0025
 lr = 1e-3
 weight_decay = 0.0025
 
-from geoseg.models.UAGLNet import UAGLNet
-net = UAGLNet(drop_path_rate=0.2)
-
 # define the loss
 loss_func = UAGLloss()
+
+# define the model
+from geoseg.models.UAGLNet import UAGLNet
+net = UAGLNet(drop_path_rate=0.2, pretrained_backbone="ldxxx/UAGLNet_Backbone")
 
 # define the dataloader
 data_root = 'path/to/AerialImageDataset'

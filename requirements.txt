@@ -13,3 +13,4 @@ addict
 gdown
 yacs
 huggingface_hub
+fvcore

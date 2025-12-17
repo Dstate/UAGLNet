@@ -22,16 +22,13 @@ backbone_weight_decay = 0.0025
 lr = 5e-4
 weight_decay = 0.0025
 
-from geoseg.models.UAGLNet import UAGLNet
-net = UAGLNet(drop_path_rate=0.4)
-
-# load_path = os.path.join('/home/ldx/UAGLNet/results/UAGLNet_WHU/ckpts', 'best_epoch.pth')
-# state_dict = torch.load(load_path, map_location=torch.device('cpu'))
-# net.load_state_dict(state_dict, strict=True)
-# print("load from", load_path)
-
 # define the loss
 loss_func = UAGLloss()
+
+# define the model
+from geoseg.models.UAGLNet import UAGLNet
+net = UAGLNet.from_pretrained('ldxxx/UAGLNet_WHU', drop_path_rate=0.4)
+
 
 # define the dataloader
 data_path = 'path/to/Massachusetts/mass_512'

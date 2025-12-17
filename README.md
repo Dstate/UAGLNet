@@ -30,11 +30,6 @@ We conduct experiments on the Inria, WHU, and Massachusetts datasets. Detailed g
 
 ### Training & Testing
 
-Download the pretrained backbone (`backbone.pth`) from [link](https://drive.google.com/drive/folders/1_kkl7wh5oE6hOynJmjRonx6CyulcuHlM), and move it to `geoseg/models`.
-```bash
-mv backbone.pth geoseg/models/
-```
-
 Training and testing examples on the Inria dataset:
 ```bash
 # training
@@ -43,7 +38,6 @@ python UAGLNet_train.py -c config/inria/UAGLNet.py
 # testing
 python UAGLNet_test.py -c config/inria/UAGLNet.py
 ```
-
 
 ## Citation
 If you find this project useful in your research, please cite it as:
@@ -58,3 +52,6 @@ If you find this project useful in your research, please cite it as:
 
 ## Acknowledgement
 This work is built upon [BuildingExtraction](https://github.com/stdcoutzrh/BuildingExtraction), [GeoSeg](https://github.com/WangLibo1995/GeoSeg/tree/main) and [SMT](https://github.com/AFeng-x/SMT). We sincerely appreciate their contributions which provide a clear pipeline and well-organized code.
+
+## License
+This project is licensed under the [Apache License 2.0](LICENSE).

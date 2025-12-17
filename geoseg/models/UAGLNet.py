@@ -5,6 +5,8 @@ from functools import partial
 import copy
 from timm.models.layers import DropPath, to_2tuple, trunc_normal_
 import math
+from huggingface_hub import PyTorchModelHubMixin
+
 
 class DWConv(nn.Module):
     def __init__(self, dim=768):
@@ -262,7 +264,7 @@ class Head(nn.Module):
         x = self.norm(x)
         return x, H, W
 
-class SMT(nn.Module):
+class SMT(nn.Module, PyTorchModelHubMixin):
     def __init__(self, img_size=512, in_chans=3, num_classes=2, embed_dims=[64, 128, 256, 512],
                  ca_num_heads=[4, 4, 4, -1], sa_num_heads=[-1, -1, 8, 16], mlp_ratios=[4, 4, 4, 2], 
                  qkv_bias=False, qk_scale=None, use_layerscale=False, layerscale_value=1e-4, drop_rate=0., 
@@ -339,17 +341,6 @@ class SMT(nn.Module):
             fms.append(x)
 
         return fms
-    
-def create_encoder(drop_path_rate = 0.):
-    encoder = SMT(
-        embed_dims=[64, 128, 256, 512], ca_num_heads=[4, 4, 4, -1], sa_num_heads=[-1, -1, 8, 16], mlp_ratios=[4, 4, 4, 2], 
-        qkv_bias=True, depths=[2, 2, 8, 1], ca_attentions=[1, 1, 1, 0], head_conv=3, expand_ratio=2, drop_path_rate=drop_path_rate)
-
-    pretrained_dict = torch.load('geoseg/models/backbone.pth')['model']
-    encoder_dict = encoder.state_dict()
-    state_dict = {k: v for k, v in pretrained_dict.items() if k in encoder_dict and v.shape == encoder_dict[k].shape}
-    encoder.load_state_dict(state_dict, strict=False)
-    return encoder
 
 class LRDU(nn.Module):
     def __init__(self,in_c,factor):
@@ -508,10 +499,19 @@ class UncertaintyAggregatedDecoder(nn.Module):
         else:
             return output
 
-class UAGLNet(nn.Module):
-    def __init__(self, drop_path_rate=0.):
+def create_encoder(drop_path_rate = 0., pretrained_backbone = None):
+    if pretrained_backbone is None:
+        encoder = SMT(
+            embed_dims=[64, 128, 256, 512], ca_num_heads=[4, 4, 4, -1], sa_num_heads=[-1, -1, 8, 16], mlp_ratios=[4, 4, 4, 2], 
+            qkv_bias=True, depths=[2, 2, 8, 1], ca_attentions=[1, 1, 1, 0], head_conv=3, expand_ratio=2, drop_path_rate=drop_path_rate)
+    else:
+        encoder = SMT.from_pretrained(pretrained_backbone, drop_path_rate=drop_path_rate)
+    return encoder
+
+class UAGLNet(nn.Module, PyTorchModelHubMixin):
+    def __init__(self, drop_path_rate=0., pretrained_backbone=None):
         super(UAGLNet,self).__init__()
-        self.CoE = create_encoder(drop_path_rate=drop_path_rate)
+        self.CoE = create_encoder(drop_path_rate=drop_path_rate, pretrained_backbone=pretrained_backbone)
         self.GLF = FeatureFusionModule(embed_dim=[64, 128, 256, 512], out_dim=[64, 128, 256, 512])
         self.UAD = UncertaintyAggregatedDecoder(out_dim=[64, 128, 256, 512])
 

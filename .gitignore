@@ -2,3 +2,4 @@ results/*
 **/__pycache__
 ./*
 *.pth
+assets/ckpt/*
