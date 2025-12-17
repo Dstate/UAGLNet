@@ -87,7 +87,7 @@ def image_augment(image, mask, mode='train'):
 
 def patch_format(inp):
     (img_path, mask_path, imgs_output_dir, masks_output_dir, mode) = inp
-
+    print(f"{img_path} start")
     img = cv2.imread(img_path, cv2.IMREAD_COLOR)
     mask = cv2.imread(mask_path, cv2.IMREAD_COLOR)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -103,6 +103,8 @@ def patch_format(inp):
         img[np.all(img == [255, 255, 255], axis=-1)] = [0, 0, 0]
 
     image_list, mask_list = image_augment(image=img.copy(), mask=mask.copy(), mode=mode)
+    print(f"{img_path} 50%")
+
     assert len(image_list) == len(mask_list)
     for m in range(len(image_list)):
         img = image_list[m]
@@ -114,14 +116,15 @@ def patch_format(inp):
         out_mask_path = os.path.join(masks_output_dir, "{}_{}.png".format(id, m))
         cv2.imwrite(out_mask_path, mask)
 
+    print(f"{img_path} ok")
 
 if __name__ == "__main__":
     seed_everything(SEED)
     args = parse_args()
     input_img_dir = args.input_img_dir
     input_mask_dir = args.input_mask_dir
-    imgs_output_dir = args.imgs_output_dir
-    masks_output_dir = args.masks_output_dir
+    imgs_output_dir = args.output_img_dir
+    masks_output_dir = args.output_mask_dir
     mode = args.mode
 
 

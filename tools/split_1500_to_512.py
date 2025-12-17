@@ -2,6 +2,7 @@ from PIL import Image, ImageOps, ImageEnhance
 import numpy as np
 import cv2,os
 import argparse
+from tqdm import tqdm
 
 
 def pad_img(img):
@@ -19,10 +20,12 @@ def crop(img,mask,split_size,stride,img_name,save_path,mode):
             img_tile_cut = img[y:y + split_size, x:x + split_size,:]
             mask_tile_cut = mask[y:y + split_size, x:x + split_size]
             cur_name = img_name + str(index) + ".png"
-            cv2.imwrite(save_path+mode+"img/"+cur_name,img_tile_cut)
-            cv2.imwrite(save_path+mode+"mask/"+cur_name,mask_tile_cut)
+            img_path = os.path.join(save_path, mode, "images", cur_name)
+            mask_path = os.path.join(save_path, mode, "masks", cur_name)
+            cv2.imwrite(img_path, img_tile_cut)
+            cv2.imwrite(mask_path, mask_tile_cut)
             index+=1
-    print("total img:",index)
+    # print("total img:",index)
 
 
 def parse_args():
@@ -38,14 +41,20 @@ if __name__ == "__main__":
 
     path = args.path
     save_path = args.save_path
+
     for mode in ["train", "val", "test"]:
         cnt = 0
-        for img_name in os.listdir(path+mode+"images/"):
-            if img_name[-1] == "g":
+        os.makedirs(os.path.join(save_path, mode, "images"), exist_ok=True)
+        os.makedirs(os.path.join(save_path, mode, "masks"), exist_ok=True)
+
+        for img_name in tqdm(os.listdir(os.path.join(path,mode,"images"))):
+            if img_name.endswith(".png"):
                 pure_name = img_name.split(".")[0]
                 #print(pure_name)
-                img = cv2.imread(path+mode+"images/"+img_name,cv2.IMREAD_UNCHANGED)
-                mask = cv2.imread(path+mode+"masks/"+img_name,cv2.IMREAD_UNCHANGED)
+                img_path = os.path.join(path, mode, "images", img_name)
+                mask_path = os.path.join(path, mode, "masks", img_name)
+                img = cv2.imread(img_path,cv2.IMREAD_UNCHANGED)
+                mask = cv2.imread(mask_path,cv2.IMREAD_UNCHANGED)
 
                 img_pad = pad_img(img)
                 mask_pad = pad_mask(mask)
