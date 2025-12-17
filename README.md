@@ -38,23 +38,23 @@ mv backbone.pth geoseg/models/
 Training and testing examples on the Inria dataset:
 ```bash
 # training
-python UAGLnet_train.py -c config/inria/UAGLNet.py
+python UAGLNet_train.py -c config/inria/UAGLNet.py
 
 # testing
-python UAGLnet_test.py -c config/inria/UAGLNet.py
+python UAGLNet_test.py -c config/inria/UAGLNet.py
 ```
 
 
-<!-- ## Citation
+## Citation
 If you find this project useful in your research, please cite it as:
 ```
-@inproceedings{liu-niu2025lbp,
-  title     = {},
-  author    = {},
-  booktitle = {Proceedings of the International Conference on Machine Learning},
-  year      = {}
+@article{UAGLNet,
+  title   = {UAGLNet: Uncertainty-Aggregated Global-Local Fusion Network with Cooperative CNN-Transformer for Building Extraction}, 
+  author  = {Siyuan Yao and Dongxiu Liu and Taotao Li and Shengjie Li and Wenqi Ren and Xiaochun Cao},
+  journal = {arXiv preprint arXiv:2512.12941},
+  year    = {2025}
 }
-``` -->
+```
 
 ## Acknowledgement
 This work is built upon [BuildingExtraction](https://github.com/stdcoutzrh/BuildingExtraction), [GeoSeg](https://github.com/WangLibo1995/GeoSeg/tree/main) and [SMT](https://github.com/AFeng-x/SMT). We sincerely appreciate their contributions which provide a clear pipeline and well-organized code.
