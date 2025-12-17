@@ -113,7 +113,7 @@ python tools/split_1500_to_512.py \
 ```
 
 ### Final Folder Structure
-Finally, you should have the following folders and structure::
+Finally, you should have the following folders and structure:
 
 ```none
 ├──data
