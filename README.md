@@ -1,6 +1,6 @@
 # UAGLNet: Uncertainty-Aggregated Global-Local Fusion Network with Cooperative CNN-Transformer for Building Extraction
 
-[[Paper](https://To/be/updated)] [[Arxiv](https://arxiv.org/abs/2512.12941)]
+[📄[**Paper**](https://To/be/updated)]  &nbsp; [📚[**Arxiv**](https://arxiv.org/abs/2512.12941)]  &nbsp; [🤗[**Hugging Face**](https://huggingface.co/collections/ldxxx/uaglnet)]
 
 🔥 **UAGLNet has been accepted by IEEE TGRS**
 
