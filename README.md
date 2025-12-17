@@ -39,6 +39,29 @@ python UAGLNet_train.py -c config/inria/UAGLNet.py
 python UAGLNet_test.py -c config/inria/UAGLNet.py
 ```
 
+### Main Results
+
+The following table presents the performance of UAGLNet on building extraction benchmarks.
+
+| **Benchmark** | **IoU** | **F1** | **P** | **R** | **Weight** |
+| :-------: | :--------: | :--------: | :-----------: | :------: | :------: |
+| Inria | 83.74 | 91.15 | 92.09 | 90.22 | [UAGLNet_Inria](https://huggingface.co/ldxxx/UAGLNet_Inria) |
+| Massachusetts | 76.97 | 86.99 | 88.28 | 85.73 | [UAGLNet_Massachusetts](https://huggingface.co/ldxxx/UAGLNet_Massachusetts) |
+| WHU | 92.07 | 95.87 | 96.21 | 95.54 | [UAGLNet_WHU](https://huggingface.co/ldxxx/UAGLNet_WHU) |
+
+You can quickly reproduce these results by running `reproduce.py`, which will load the pretrained checkpoints from Hugging Face and perform inference.
+
+```bash
+# Inria
+python Reproduce.py -d Inria
+
+# Massachusetts
+python Reproduce.py -d Mass
+
+# WHU
+python Reproduce.py -d WHU
+```
+
 ## Citation
 If you find this project useful in your research, please cite it as:
 ```
