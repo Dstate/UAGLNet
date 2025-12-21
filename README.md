@@ -49,7 +49,7 @@ The following table presents the performance of UAGLNet on building extraction b
 | Mass | 76.97 | 86.99 | 88.28 | 85.73 | [UAGLNet_Mass](https://huggingface.co/ldxxx/UAGLNet_Massachusetts) |
 | WHU | 92.07 | 95.87 | 96.21 | 95.54 | [UAGLNet_WHU](https://huggingface.co/ldxxx/UAGLNet_WHU) |
 
-You can quickly reproduce these results by running `Reproduce.py`, which will load the pretrained checkpoints from Hugging Face and perform inference.
+You can quickly reproduce these results by running `Reproduce.py`, which will load our checkpoints from Hugging Face and perform inference.
 
 ```bash
 # Inria
